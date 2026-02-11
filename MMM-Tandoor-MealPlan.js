@@ -22,7 +22,7 @@ Module.register("MMM-Tandoor-MealPlan", {
       console.error("Token is required to access to Tandoor API. No requests are made.")
     } else {
       console.info("Started MMM-Tandoor-MealPlan for", this.url);
-      getTandoorMealplan()
+      this.getTandoorMealplan()
       // set timeout for mealplan update
       setInterval(() => this.getTandoorMealplan(), 60000)
     }
@@ -37,6 +37,7 @@ Module.register("MMM-Tandoor-MealPlan", {
    */
   socketNotificationReceived: function (notification, payload) {
     if (notification === "TANDOOR_MEALPLAN") {
+      console.debug("Received mealplan from node_helper", payload.mealplan)
       this.mealplan = payload.mealplan
       this.updateDom()
     }
@@ -47,22 +48,26 @@ Module.register("MMM-Tandoor-MealPlan", {
    */
   getDom() {
     const wrapper = document.createElement("div")
-    const table = document.createElement("table")
-    for (const day in this.mealplan) {
-      const tableRow = document.createElement("tr")
-      const localizedDay = new Intl.DateTimeFormat([Intl.DateTimeFormat().resolvedOptions().locale, "en"], { weekday: "long" }).format(new Date(day))
-      tableRow.appendChild(document.createElement("td", { innerText: localizedDay }))
-      const text = [
-        this.mealplan[day].title,
-        this.mealplan[day].note,
-        this.mealplan[day].recipe,
-        this.mealplan[day].mealType,
-        this.mealplan[day].servings ? `${this.mealplan[day].servings} ${!!this.mealplan[day].servingsText ? this.mealplan[day].servingsText : "Servings"}` : undefined,
-      ].filter(e => !!e).join("<br>")
-      tableRow.appendChild(document.createElement("td", { innerText: text }))
-    }
     wrapper.appendChild(document.createElement("b", { innerText: "Tandoor MealPlan" }))
-    wrapper.appendChild(table)
+    if (this.mealplan) {
+      const table = document.createElement("table")
+      for (const day in this.mealplan) {
+        const tableRow = document.createElement("tr")
+        const localizedDay = new Intl.DateTimeFormat([Intl.DateTimeFormat().resolvedOptions().locale, "en"], { weekday: "long" }).format(new Date(day))
+        tableRow.appendChild(document.createElement("td", { innerText: localizedDay }))
+        const text = [
+          this.mealplan[day].title,
+          this.mealplan[day].note,
+          this.mealplan[day].recipe,
+          this.mealplan[day].mealType,
+          this.mealplan[day].servings ? `${this.mealplan[day].servings} ${!!this.mealplan[day].servingsText ? this.mealplan[day].servingsText : "Servings"}` : undefined,
+        ].filter(e => !!e).join("<br>")
+        tableRow.appendChild(document.createElement("td", { innerText: text }))
+      }
+      wrapper.appendChild(table)
+    } else {
+      wrapper.appendChild(document.createElement("p", { innerText: "Mealplan is not available" }))
+    }
     return wrapper
   },
 
