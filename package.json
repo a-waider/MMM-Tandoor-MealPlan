@@ -1,8 +1,8 @@
 {
-  "name": "mmm-template",
-  "version": "1.0.0",
-  "description": "[Module description]",
-  "main": "MMM-Template.js",
+  "name": "mmm-tandoor-mealplan",
+  "version": "0.0.0",
+  "description": "Fetch the mealplan from the Tandoor API",
+  "main": "MMM-Tandoor-MealPlan.js",
   "scripts": {
     "lint": "eslint",
     "lint:fix": "eslint --fix",
@@ -10,17 +10,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+[GitHub url].git"
+    "url": "git+https://github.local.haus/a-waider/MMM-Tandoor-MealPlan.git"
   },
   "keywords": [
-    "template"
+    "Tandoor",
+    "Mealplan"
   ],
-  "author": "[Author]",
+  "author": "Andreas Waider",
   "license": "MIT",
   "bugs": {
-    "url": "[GitHub url]/issues"
+    "url": "https://github.local.haus/a-waider/MMM-Tandoor-MealPlan/issues"
   },
-  "homepage": "[GitHub url]#readme",
+  "homepage": "[https://github.local.haus/a-waider/MMM-Tandoor-MealPlan#readme",
   "devDependencies": {
     "@eslint/css": "^0.9.0",
     "@eslint/js": "^9.30.1",

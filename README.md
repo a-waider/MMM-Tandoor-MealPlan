@@ -1,15 +1,10 @@
-# MMM-Template
-Use this template for creating new MagicMirror² modules.
+# MMM-Tandoor-MealPlan
 
-See the [wiki page](https://github.com/Dennis-Rosenbaum/MMM-Template/wiki) for an in depth overview of how to get started.
-
-# MMM-Template
-
-*MMM-Template* is a module for [MagicMirror²](https://github.com/MagicMirrorOrg/MagicMirror) that displays ... [Module description]
+*MMM-Tandoor-MealPlan* is a module for [MagicMirror²](https://github.com/MagicMirrorOrg/MagicMirror) that fetches and displays the mealplan from the [Tandoor](https://github.com/TandoorRecipes/recipes) API.
 
 ## Screenshot
 
-![Example of MMM-Template](./example_1.png)
+![Example of MMM-Tandoor-MealPlan](./example_1.png)
 
 ## Installation
 
@@ -19,7 +14,7 @@ In your terminal, go to the modules directory and clone the repository:
 
 ```bash
 cd ~/MagicMirror/modules
-git clone [GitHub url]
+git clone [https://github.local.haus/a-waider/MMM-Tandoor-MealPlan
 ```
 
 ### Update
@@ -27,7 +22,7 @@ git clone [GitHub url]
 Go to the module directory and pull the latest changes:
 
 ```bash
-cd ~/MagicMirror/modules/MMM-Template
+cd ~/MagicMirror/modules/MMM-Tandoor-MealPlan
 git pull
 ```
 
@@ -41,8 +36,12 @@ Minimal configuration to use the module:
 
 ```js
     {
-        module: 'MMM-Template',
-        position: 'lower_third'
+        module: 'MMM-Tandoor-MealPlan',
+        position: 'lower_third',
+        config: {
+            url: "https://app.tandoor.dev",
+            token: "",
+        }
     },
 ```
 
@@ -50,10 +49,11 @@ Configuration with all options:
 
 ```js
     {
-        module: 'MMM-Template',
+        module: 'MMM-Tandoor-MealPlan',
         position: 'lower_third',
         config: {
-            exampleContent: 'Welcome world'
+            url: "https://app.tandoor.dev",
+            token: "",
         }
     },
 ```
@@ -62,13 +62,8 @@ Configuration with all options:
 
 Option|Possible values|Default|Description
 ------|------|------|-----------
-`exampleContent`|`string`|not available|The content to show on the page
-
-## Sending notifications to the module
-
-Notification|Description
-------|-----------
-`TEMPLATE_RANDOM_TEXT`|Payload must contain the text that needs to be shown on this module
+`url`|`string`|https://app.tandoor.dev|The URL under which the Tandoor instance is accessible
+`token`|`string`|undefined|The token to authenticate to Tandoor. Can be generated at https://app.tandoor.dev/settings/api or your custom instance.
 
 ## Developer commands
 
