@@ -21,7 +21,7 @@ Module.register("MMM-Tandoor-MealPlan", {
     if (this.token === undefined) {
       console.error("Token is required to access to Tandoor API. No requests are made.")
     } else {
-      console.info("Started MMM-Tandoor-MealPlan for", this.url);
+      console.info("Started MMM-Tandoor-MealPlan for", this.url)
       this.getTandoorMealplan()
       // set timeout for mealplan update
       setInterval(() => this.getTandoorMealplan(), 60000)
@@ -60,7 +60,7 @@ Module.register("MMM-Tandoor-MealPlan", {
           this.mealplan[day].note,
           this.mealplan[day].recipe,
           this.mealplan[day].mealType,
-          this.mealplan[day].servings ? `${this.mealplan[day].servings} ${!!this.mealplan[day].servingsText ? this.mealplan[day].servingsText : "Servings"}` : undefined,
+          this.mealplan[day].servings ? `${this.mealplan[day].servings} ${this.mealplan[day].servingsText ? this.mealplan[day].servingsText : "Servings"}` : undefined,
         ].filter(e => !!e).join("<br>")
         tableRow.appendChild(document.createElement("td", { innerText: text }))
       }
