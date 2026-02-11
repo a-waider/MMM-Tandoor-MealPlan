@@ -65,7 +65,7 @@ module.exports = NodeHelper.create({
       try {
         const response = await (await fetch(mealPlanRequest, {
           headers: {
-            Authorization: payload.token,
+            Authorization: `Bearer ${payload.token}`,
             Accept: "application/json",
           },
         })).json()
