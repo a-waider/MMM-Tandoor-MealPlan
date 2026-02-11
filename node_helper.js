@@ -61,7 +61,7 @@ module.exports = NodeHelper.create({
       toDate.setDate(toDate.getDate() + 7)
       params.append("to_date", toDate.toISOString().split("T")[0])
       const mealPlanRequest = `${payload.url}/api/meal-plan/?${params}`
-      console.debug("Fetching mealplan at", mealPlanRequest)
+      console.debug("Fetching mealplan at", mealPlanRequest, "with token", payload.token) // TODO: Remove token from logs
       try {
         const response = await (await fetch(mealPlanRequest, {
           headers: {
