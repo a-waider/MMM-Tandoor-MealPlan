@@ -37,7 +37,7 @@ Module.register("MMM-Tandoor-MealPlan", {
    */
   socketNotificationReceived: function (notification, payload) {
     if (notification === "TANDOOR_MEALPLAN") {
-      console.debug("Received mealplan from node_helper", payload.mealplan)
+      console.debug("Received mealplan from node_helper for days", Object.keys(payload.mealplan))
       this.mealplan = payload.mealplan
       this.updateDom()
     }

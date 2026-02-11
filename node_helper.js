@@ -61,7 +61,7 @@ module.exports = NodeHelper.create({
       toDate.setDate(toDate.getDate() + 7)
       params.append("to_date", toDate.toISOString().split("T")[0])
       const mealPlanRequest = `${payload.url}/api/meal-plan/?${params}`
-      console.debug("Fetching mealplan at", mealPlanRequest, "with token", payload.token) // TODO: Remove token from logs
+      console.debug("Fetching mealplan at", mealPlanRequest)
       try {
         const response = await (await fetch(mealPlanRequest, {
           headers: {
@@ -69,9 +69,7 @@ module.exports = NodeHelper.create({
             Accept: "application/json",
           },
         })).json()
-        console.debug("Got mealplan from Tandoor", response)
         const mealplan = parseMealPlan(response)
-        console.debug("Parsed mealplan", mealplan)
         this.sendSocketNotification("TANDOOR_MEALPLAN", mealplan)
       } catch (error) {
         console.error("Failed to fetch Tandoor mealplan", error)
