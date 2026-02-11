@@ -55,7 +55,7 @@ Module.register("MMM-Tandoor-MealPlan", {
         this.mealplan[day].note,
         this.mealplan[day].recipe,
         this.mealplan[day].mealType,
-        this.mealplan[day].servings ? `${this.mealplan[day].servings} Servings` : undefined,
+        this.mealplan[day].servings ? `${this.mealplan[day].servings} ${!!this.mealplan[day].servingsText ? this.mealplan[day].servingsText : "Servings"}` : undefined,
       ].filter(e => !!e).join("<br>")
       tableRow.appendChild(document.createElement("td", { innerText: text }))
     }
