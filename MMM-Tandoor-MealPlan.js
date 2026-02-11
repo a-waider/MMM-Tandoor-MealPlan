@@ -21,6 +21,7 @@ Module.register("MMM-Tandoor-MealPlan", {
     if (this.token === undefined) {
       console.error("Token is required to access to Tandoor API. No requests are made.")
     } else {
+      console.info("Started MMM-Tandoor-MealPlan for", this.url);
       getTandoorMealplan()
       // set timeout for mealplan update
       setInterval(() => this.getTandoorMealplan(), 60000)
