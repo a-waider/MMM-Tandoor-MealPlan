@@ -1,4 +1,4 @@
-import NodeHelper from "node_helper"
+const NodeHelper = reqire("node_helper")
 
 const getAllDays = (fromDate, toDate) => {
   const allDays = []
