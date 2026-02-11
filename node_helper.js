@@ -10,7 +10,7 @@ const getAllDays = (fromDate, toDate) => {
   return allDays
 }
 
-export const parseMealPlan = (mealplan) => {
+const parseMealPlan = (mealplan) => {
   return mealplan
     .results
     .map(({
