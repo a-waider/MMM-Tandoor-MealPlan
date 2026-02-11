@@ -60,7 +60,7 @@ module.exports = NodeHelper.create({
       const toDate = new Date(fromDate)
       toDate.setDate(toDate.getDate() + 7)
       params.append("to_date", toDate)
-      const mealplan = parseMealPlan(JSON.parse(fetch(`${payload.url}?${params}`, { headers: { Authorization: payload.token } })))
+      const mealplan = parseMealPlan(JSON.parse(fetch(`${payload.url}/api/meal-plan?${params}`, { headers: { Authorization: payload.token } })))
       console.debug("Got mealplan from Tandoor", mealplan)
       this.sendSocketNotification("TANDOOR_MEALPLAN", mealplan)
     }
