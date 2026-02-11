@@ -1,4 +1,4 @@
-const NodeHelper = reqire("node_helper")
+const NodeHelper = require("node_helper")
 
 const getAllDays = (fromDate, toDate) => {
   const allDays = []
