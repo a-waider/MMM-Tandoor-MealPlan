@@ -59,7 +59,7 @@ module.exports = NodeHelper.create({
       params.append("from_date", fromDate)
       const toDate = new Date(fromDate)
       toDate.setDate(toDate.getDate() + 7)
-      params.append("to_date", toDate)
+      params.append("to_date", toDate.toISOString().split("T")[0])
       const mealPlanRequest = `${payload.url}/api/meal-plan?${params}`
       console.debug("Fetching mealplan at", mealPlanRequest)
       const mealplan = parseMealPlan(JSON.parse(fetch(mealPlanRequest, { headers: { Authorization: payload.token } })))
