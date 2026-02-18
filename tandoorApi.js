@@ -49,7 +49,7 @@ const parseMealPlan = (mealplan) => {
     }, {})
 }
 
-export const getMealPlan = (url: string, token: string) => {
+const getMealPlan = (url: string, token: string) => {
     const params = new URLSearchParams()
       const fromDate = new Date(Date.now()).toISOString().split("T")[0]
       params.append("from_date", fromDate)
@@ -70,3 +70,5 @@ export const getMealPlan = (url: string, token: string) => {
         console.error("Failed to fetch Tandoor mealplan", error)
       }
 }
+
+module.exports = { getMealPlan }
