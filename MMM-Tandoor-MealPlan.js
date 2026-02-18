@@ -1,3 +1,5 @@
+const { getMealPlan } = require("tandoorApi")
+
 Module.register("MMM-Tandoor-MealPlan", {
   defaults: {
     url: "https://app.tandoor.dev",

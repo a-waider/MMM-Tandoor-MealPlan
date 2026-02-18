@@ -49,7 +49,7 @@ const parseMealPlan = (mealplan) => {
     }, {})
 }
 
-const getMealPlan = (url: string, token: string) => {
+export const getMealPlan = (url: string, token: string) => {
     const params = new URLSearchParams()
       const fromDate = new Date(Date.now()).toISOString().split("T")[0]
       params.append("from_date", fromDate)

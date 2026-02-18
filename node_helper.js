@@ -1,4 +1,4 @@
-import { getMealPlan } from "./tandoorApi"
+const { getMealPlan } = require("./tandoorApi")
 const NodeHelper = require("node_helper")
 
 module.exports = NodeHelper.create({
