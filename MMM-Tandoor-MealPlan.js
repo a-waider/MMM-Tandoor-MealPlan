@@ -72,6 +72,11 @@ Module.register("MMM-Tandoor-MealPlan", {
   },
 
   getTandoorMealplan() {
+    getMealPlan(this.config.url, this.config.token)
+      .then((mealplan) => {
+        this.mealplan = mealplan
+        this.updateDom()
+      })
     this.sendSocketNotification("GET_TANDOOR_MEALPLAN", { url: this.config.url, token: this.config.token })
   },
 
